@@ -4,6 +4,7 @@ const sql = require('mssql');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static('public'));
 
 const config = {
