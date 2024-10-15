@@ -12,7 +12,7 @@ const config = {
     user: 'siri',
     password: 'S1r1@vicky',
     server: 'testserversiri1.database.windows.net',
-    database: 'testdbsiri (testserversiri1/testdbsiri)'
+    database: 'testdbsiri'
 };
 
 app.post('/submit', async (req, res) => {
