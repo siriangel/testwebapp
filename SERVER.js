@@ -4,15 +4,10 @@ const sql = require('mssql');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
 app.use(express.static('public'));
 
 const config = {
-    user: 'siri',
-    password: 'S1r1@vicky',
-    server: 'testserversiri1.database.windows.net',
-    database: 'testdbsiri'
+    connectionString: process.env.DB_CONNECTION_STRING
 };
 
 app.post('/submit', async (req, res) => {
@@ -37,4 +32,3 @@ app.get('/names', async (req, res) => {
 });
 
 app.listen(3000, () => console.log('Server running on port 3000'));
-
