@@ -7,10 +7,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 const config = {
-    user: 'your_db_user',
-    password: 'your_db_password',
-    server: 'your_db_server',
-    database: 'your_db_name'
+    user: 'siri',
+    password: 'S1r1@vicky',
+    server: 'testserversiri1.database.windows.net',
+    database: 'testdbsiri (testserversiri1/testdbsiri)'
 };
 
 app.post('/submit', async (req, res) => {
@@ -35,8 +35,4 @@ app.get('/names', async (req, res) => {
 });
 
 app.listen(3000, () => console.log('Server running on port 3000'));
-
-const config = {
-    connectionString: process.env.DB_CONNECTION_STRING
-};
 
