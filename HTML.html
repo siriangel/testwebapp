@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Name</title>
+</head>
+<body>
+    <h1>HI, Please enter your name</h1>
+    <form action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Names List</h2>
+    <div id="namesList"></div>
+    <script>
+        async function fetchNames() {
+            const response = await fetch('/names');
+            const names = await response.json();
+            const namesList = document.getElementById('namesList');
+            namesList.innerHTML = names.map(name => `<p>${name}</p>`).join('');
+        }
+        fetchNames();
+    </script>
+</body>
+</html>
