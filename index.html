@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Hello World</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-    <form action="/submit" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <button type="submit">Submit</button>
-    </form>
-    <h2>Names List</h2>
-    <div id="namesList"></div>
-    <script>
-        async function fetchNames() {
+<script>
+    async function fetchNames() {
+        try {
             const response = await fetch('/names');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
             const names = await response.json();
             const namesList = document.getElementById('namesList');
             namesList.innerHTML = names.map(name => `<p>${name}</p>`).join('');
+        } catch (error) {
+            console.error('Failed to load names:', error);
+            const namesList = document.getElementById('namesList');
+            namesList.innerHTML = `<p>Error loading names: ${error.message}</p>`;
         }
-        fetchNames();
-    </script>
-</body>
-</html>
+    }
+    fetchNames();
+</script>
